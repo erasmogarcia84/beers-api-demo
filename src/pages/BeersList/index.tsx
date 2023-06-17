@@ -1,10 +1,20 @@
 import React from "react";
 import { Heading, Text, VStack } from "@chakra-ui/react";
-import { mockdata } from "./mockdata";
+
 import BeersTable from "../../components/BeersTable";
+import { getBeers } from "../../services/beers";
 
 const BeersList = () => {
-  const [beers] = React.useState(mockdata);
+  const [beers, setBeers] = React.useState([]);
+
+  const getBeersFromAPI = async () => {
+    const currentBeers = await getBeers();
+    setBeers(currentBeers);
+  };
+
+  React.useEffect(() => {
+    getBeersFromAPI();
+  }, []);
 
   return (
     <VStack spacing={8}>
