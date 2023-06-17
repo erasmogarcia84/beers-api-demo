@@ -12,6 +12,7 @@ import {
   StatLabel,
   StatNumber,
   Box,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 type Beer = any;
@@ -20,6 +21,8 @@ const noImagePlaceholder =
   "https://commons.wikimedia.org/wiki/File:No-Image-Placeholder.svg";
 
 const BeerCard: FC<Beer> = ({ beer }) => {
+  const bgCard = useColorModeValue("gray.100", "gray.700");
+
   const beerParams = {
     ABV: beer.abv,
     IBU: beer.ibu,
@@ -42,6 +45,7 @@ const BeerCard: FC<Beer> = ({ beer }) => {
         maxW={{ base: "100%", sm: "200px" }}
         src={beer.image_url || noImagePlaceholder}
         alt={beer.name}
+        m="4"
       />
 
       <Stack textAlign={"left"}>
@@ -61,7 +65,7 @@ const BeerCard: FC<Beer> = ({ beer }) => {
           <Box display="flex" justifyContent="space-between" flexWrap={"wrap"}>
             {Object.entries(beerParams).map(([key, value]) => (
               <Stat
-                bg={"gray.100"}
+                bg={bgCard}
                 p="4"
                 mx="6"
                 my="2"

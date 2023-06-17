@@ -11,6 +11,7 @@ import {
   TableCaption,
   TableContainer,
   Image,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 
@@ -24,6 +25,7 @@ interface Beer {
 
 const BeersTable: FC<{ beers: Beer[] }> = ({ beers }) => {
   const navigate = useNavigate();
+  const bgRow = useColorModeValue("gray.100", "gray.700");
 
   return (
     <TableContainer>
@@ -51,7 +53,7 @@ const BeersTable: FC<{ beers: Beer[] }> = ({ beers }) => {
               key={beer.id}
               onClick={() => navigate(`/${beer.id}`)}
               style={{ cursor: "pointer" }}
-              _hover={{ bg: "gray.100" }}
+              _hover={{ bg: bgRow }}
             >
               <Td>
                 <Image
