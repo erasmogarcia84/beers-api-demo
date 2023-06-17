@@ -3,9 +3,10 @@ import { Heading, Text, VStack } from "@chakra-ui/react";
 
 import BeersTable from "../../components/BeersTable";
 import { getBeers } from "../../services/beers";
+import { Beer } from "../../types/beer";
 
 const BeersList = () => {
-  const [beers, setBeers] = React.useState([]);
+  const [beers, setBeers] = React.useState<Beer[]>([]);
 
   const getBeersFromAPI = async () => {
     const currentBeers = await getBeers();

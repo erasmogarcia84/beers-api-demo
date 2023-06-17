@@ -14,14 +14,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
-
-interface Beer {
-  id: number;
-  name: string;
-  tagline: string;
-  first_brewed: string;
-  image_url: string;
-}
+import { Beer } from "../../types/beer";
 
 const BeersTable: FC<{ beers: Beer[] }> = ({ beers }) => {
   const navigate = useNavigate();
@@ -64,10 +57,10 @@ const BeersTable: FC<{ beers: Beer[] }> = ({ beers }) => {
                 />
               </Td>
               <Td>
-                <Text as="b" display={"block"} mb={2}>
+                <Text as="b" display={"block"} mb={4}>
                   {beer.name}
                 </Text>
-                <Text as="i" display={"block"} mb={2}>
+                <Text as="i" display={"block"}>
                   {beer.tagline}
                 </Text>
               </Td>

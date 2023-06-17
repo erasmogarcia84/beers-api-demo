@@ -4,13 +4,14 @@ import { useNavigate, useParams } from "react-router";
 import { getBeerById } from "../../services/beers";
 import BeerCard from "../BeerCard";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import { Beer, BeerInitialValues } from "../../types/beer";
 
 const BeerDetails = () => {
   const toast = useToast();
   const { beerId } = useParams();
   const navigate = useNavigate();
 
-  const [beer, setBeer] = React.useState({});
+  const [beer, setBeer] = React.useState<Beer>(BeerInitialValues);
 
   const getBeerFromAPI = async (id: string) => {
     try {
